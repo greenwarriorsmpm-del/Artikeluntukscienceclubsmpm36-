@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIPACHE | Informasi Pembuatan Sipache</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:linear-gradient(135deg,#FFE45E,#FFD54F,#FFC107);
+overflow-x:hidden;
+color:#333;
+transition:.4s;
+}
+
+body.dark{
+background:#121212;
+color:white;
+}
+
+::-webkit-scrollbar{
+width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+background:#16a34a;
+border-radius:20px;
+}
+
+.progress{
+position:fixed;
+top:0;
+left:0;
+height:5px;
+width:0%;
+background:#16a34a;
+z-index:99999;
+}
+
+.bubble{
+position:fixed;
+z-index:-2;
+pointer-events:none;
+}
+
+@keyframes bubble{
+
+0%{
+transform:translateY(0) scale(1);
+opacity:1;
+}
+
+100%{
+transform:translateY(-120vh) scale(1.8);
+opacity:0;
+}
+
+}
+
+nav{
+position:fixed;
+top:15px;
+left:50%;
+transform:translateX(-50%);
+width:95%;
+padding:15px 25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+background:rgba(255,255,255,.18);
+backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.25);
+border-radius:20px;
+
+box-shadow:0 8px 30px rgba(0,0,0,.15);
+
+z-index:999;
+transition:.4s;
+}
+
+body.dark nav{
+
+background:rgba(20,20,20,.45);
+border:1px solid rgba(255,255,255,.08);
+
+}
+
+nav h1{
+color:#16a34a;
+font-size:30px;
+}
+
+nav ul{
+display:flex;
+gap:25px;
+list-style:none;
+}
+
+nav a{
+text-decoration:none;
+color:#333;
+font-weight:600;
+}
+
+body.dark nav a{
+color:white;
+}
+
+.toggle{
+
+width:55px;
+height:55px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:0;
+
+}
+
+.hero{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+color:white;
+background:
+linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.3)),
+url("https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=1400&q=80");
+background-size:cover;
+background-position:center;
+}
+
+.hero h2{
+font-size:65px;
+margin-bottom:20px;
+animation:fade 1s;
+}
+
+.hero p{
+font-size:20px;
+max-width:750px;
+margin:auto;
+line-height:1.8;
+}
+
+.btn{
+display:inline-block;
+margin-top:35px;
+padding:15px 35px;
+background:#16a34a;
+color:white;
+text-decoration:none;
+border-radius:40px;
+transition:.3s;
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+@keyframes fade{
+
+from{
+opacity:0;
+transform:translateY(40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+section{
+padding:90px 10%;
+}
+
+.title{
+text-align:center;
+font-size:40px;
+margin-bottom:40px;
+color:#16a34a;
+}
+
+.card{
+
+background:rgba(255,255,255,.35);
+backdrop-filter:blur(15px);
+-webkit-backdrop-filter:blur(15px);
+
+border:1px solid rgba(255,255,255,.3);
+
+box-shadow:0 15px 35px rgba(0,0,0,.15);
+
+border-radius:25px;
+
+padding:25px;
+
+transition:.4s;
+
+}
+
+.card:hover{
+
+transform:translateY(-10px);
+
+box-shadow:0 20px 45px rgba(0,0,0,.25);
+
+}
+
+body.dark .card{
+
+background:rgba(20,20,20,.35);
+
+  }
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+body.dark .card{
+background:#1e1e1e;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.about{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:35px;
+align-items:center;
+}
+
+.about img{
+width:100%;
+border-radius:20px;
+box-shadow:0 15px 30px rgba(0,0,0,.2);
+}
+
+.about p{
+line-height:2;
+font-size:18px;
+}
+
+.search{
+width:100%;
+padding:15px;
+border-radius:12px;
+border:2px solid #16a34a;
+margin-bottom:25px;
+font-size:16px;
+outline:none;
+}
+
+.timeline{
+position:relative;
+}
+
+.step{
+background:white;
+padding:20px;
+margin:20px 0;
+border-left:6px solid #16a34a;
+border-radius:15px;
+box-shadow:0 10px 20px rgba(0,0,0,.12);
+transition:.3s;
+}
+
+.step:hover{
+transform:translateX(10px);
+}
+
+body.dark .step{
+background:#1e1e1e;
+}
+
+.fade{
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+
+.fade.show{
+opacity:1;
+transform:translateY(0);
+}
+
+footer{
+background:#16a34a;
+color:white;
+padding:30px;
+text-align:center;
+margin-top:60px;
+}
+
+#top{
+position:fixed;
+right:20px;
+bottom:20px;
+width:50px;
+height:50px;
+border:none;
+border-radius:50%;
+background:#16a34a;
+color:white;
+font-size:20px;
+cursor:pointer;
+display:none;
+}
+
+.team-card{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:40px;
+flex-wrap:wrap;
+margin-top:30px;
+}
+
+.team-img{
+width:100%;
+max-width:450px;
+border-radius:25px;
+object-fit:cover;
+border:4px solid rgba(255,255,255,.5);
+background:#fff;
+box-shadow:0 20px 45px rgba(0,0,0,.25);
+transition:.5s;
+}
+
+.team-img:hover{
+transform:scale(1.04);
+}
+
+.team-text{
+flex:1;
+min-width:280px;
+}
+
+.team-text h3{
+font-size:32px;
+color:#16a34a;
+margin-bottom:15px;
+}
+
+.team-text p{
+font-size:18px;
+line-height:1.8;
+}
+
+@media(max-width:768px){
+
+.team-card{
+flex-direction:column;
+text-align:center;
+}
+
+.team-text h3{
+font-size:26px;
+}
+
+}
+  
+@media(max-width:768px){
+
+nav{
+flex-direction:column;
+gap:10px;
+padding:15px;
+}
+
+nav ul{
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.hero h2{
+font-size:42px;
+}
+
+.hero p{
+font-size:17px;
+}
+
+}
+
+
+/* ================= KICAU GREEN WARIOR ================= */
+.menu-btn{
+background:transparent;
+border:0;
+font-size:28px;
+cursor:pointer;
+color:#16a34a;
+margin-right:10px;
+}
+.menu-box{
+position:fixed;
+top:88px;
+right:2.5%;
+width:270px;
+padding:15px;
+background:rgba(255,255,255,.82);
+backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,.4);
+border-radius:20px;
+box-shadow:0 15px 40px rgba(0,0,0,.18);
+z-index:1000;
+display:none;
+}
+.menu-box.show{display:block;}
+body.dark .menu-box{background:rgba(25,25,25,.92);}
+.menu-box button{
+width:100%;
+text-align:left;
+padding:14px 16px;
+margin:5px 0;
+border:0;
+border-radius:14px;
+background:transparent;
+font-family:'Poppins',sans-serif;
+font-size:15px;
+font-weight:600;
+cursor:pointer;
+color:#333;
+}
+body.dark .menu-box button{color:white;}
+.menu-box button:hover{background:rgba(22,163,74,.12);}
+.nav-actions{display:flex;align-items:center;gap:8px;}
+#kicauWebsite{display:none;padding-top:100px;}
+#kicauWebsite.active{display:block;}
+#kicauWebsite .k-hero{
+min-height:78vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:120px 8% 80px;
+background:linear-gradient(rgba(0,0,0,.48),rgba(0,0,0,.48)),url('1000164895.webp');
+background-size:cover;
+background-position:center;
+color:white;
+}
+.k-hero h2{font-size:58px;line-height:1.15;margin-bottom:18px;}
+.k-hero p{max-width:850px;margin:auto;font-size:19px;line-height:1.8;}
+.k-badge{display:inline-block;background:#16a34a;padding:9px 18px;border-radius:30px;font-weight:700;margin-bottom:18px;}
+.k-section{padding:85px 10%;}
+.k-title{text-align:center;color:#16a34a;font-size:40px;margin-bottom:18px;}
+.k-sub{text-align:center;max-width:850px;margin:0 auto 42px;line-height:1.8;font-size:17px;}
+.k-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px;}
+.k-card{
+background:rgba(255,255,255,.5);
+backdrop-filter:blur(15px);
+-webkit-backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,.35);
+box-shadow:0 15px 35px rgba(0,0,0,.13);
+border-radius:25px;
+overflow:hidden;
+transition:.35s;
+}
+.k-card:hover{transform:translateY(-8px);}
+body.dark .k-card{background:#1e1e1e;}
+.k-card img{width:100%;height:220px;object-fit:cover;display:block;}
+.k-card-content{padding:25px;}
+.k-card h3{color:#16a34a;margin-bottom:10px;font-size:23px;}
+.k-card p{line-height:1.85;}
+.k-text-card{padding:30px;border-radius:25px;background:rgba(255,255,255,.5);backdrop-filter:blur(15px);box-shadow:0 15px 35px rgba(0,0,0,.12);line-height:1.9;}
+body.dark .k-text-card{background:#1e1e1e;}
+.k-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:30px;}
+.k-list-item{padding:22px;border-left:5px solid #16a34a;background:rgba(255,255,255,.5);border-radius:15px;box-shadow:0 10px 25px rgba(0,0,0,.1);}
+body.dark .k-list-item{background:#1e1e1e;}
+.k-list-item h3{margin-bottom:8px;color:#16a34a;}
+.k-steps{counter-reset:kstep;max-width:950px;margin:auto;}
+.k-step{counter-increment:kstep;position:relative;padding:25px 25px 25px 75px;margin:18px 0;background:rgba(255,255,255,.55);border-radius:20px;box-shadow:0 10px 25px rgba(0,0,0,.1);}
+.k-step::before{content:counter(kstep);position:absolute;left:20px;top:20px;width:38px;height:38px;border-radius:50%;background:#16a34a;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;}
+body.dark .k-step{background:#1e1e1e;}
+.k-cta{padding:90px 10%;text-align:center;background:linear-gradient(135deg,#16a34a,#15803d);color:white;}
+.k-cta h2{font-size:42px;margin-bottom:15px;}
+.k-cta p{max-width:750px;margin:0 auto 25px;line-height:1.8;}
+.k-cta .btn{background:white;color:#15803d;margin-top:5px;}
+.k-footer{background:#0f5132;color:white;text-align:center;padding:30px;}
+@media(max-width:768px){
+.menu-box{right:5%;top:105px;width:90%;}
+.k-hero h2{font-size:40px;}
+.k-hero p{font-size:16px;}
+.k-title{font-size:32px;}
+.k-section{padding:65px 6%;}
+.k-cta h2{font-size:32px;}
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+
+<div class="progress"></div>
+
+<div class="bubble" style="left:5%;width:30px;height:30px;animation-duration:8s;"></div>
+
+<div class="bubble" style="left:20%;width:60px;height:60px;animation-duration:12s;"></div>
+
+<div class="bubble" style="left:35%;width:20px;height:20px;animation-duration:9s;"></div>
+
+<div class="bubble" style="left:55%;width:70px;height:70px;animation-duration:14s;"></div>
+
+<div class="bubble" style="left:75%;width:35px;height:35px;animation-duration:11s;"></div>
+
+<div class="bubble" style="left:90%;width:55px;height:55px;animation-duration:15s;"></div>
+
+<nav>
+
+<h1>SIPACHE</h1>
+
+<ul>
+
+<li><a href="#home">Home</a></li>
+
+<li><a href="#tentang">Tentang</a></li>
+
+<li><a href="#manfaat">Manfaat</a></li>
+
+<li><a href="#alat">Alat</a></li>
+
+<li><a href="#cara">Cara</a></li>
+
+</ul>
+
+<div class="nav-actions">
+<button class="menu-btn" onclick="toggleMenu()" aria-label="Buka menu">☰</button>
+<button class="toggle" onclick="darkMode()">
+🌙
+</button>
+</div>
+
+</nav>
+
+<div class="menu-box" id="menuBox">
+<button onclick="showSIPACHE()">🍍 Website SIPACHE</button>
+<button onclick="showKICAU()">🌱 KICAU GREEN WARIOR</button>
+</div>
+
+<section class="hero" id="home">
+
+<div>
+
+<h2>SIPACHE</h2>
+
+<p>
+Informasi Pembuatan Sipache
+</p>
+
+<a href="#tentang" class="btn">
+Mulai Membaca
+</a>
+
+</div>
+
+</section>
+
+<section id="tentang" class="fade">
+
+<section id="tim" class="fade">
+
+<h2 class="title">Tim SIPACHE</h2>
+
+<div class="team-card">
+  
+<img src="IMG-20260725-WA0007.jpg" alt="Tim SIPACHE" class="team-img">
+
+<img src="IMG-20260725-WA0008.jpg" alt="Tim SIPACHE" class="team-img">
+  
+<div class="team-text">
+
+<h3>SMP Muhammadiyah 36 Jakarta</h3>
+
+<p>
+
+Foto di atas merupakan tim pembuat SIPACHE. Penelitian ini bertujuan untuk memperkenalkan minuman fermentasi Sipache yang berasal dari Meksiko serta memberikan informasi mengenai manfaat, alat dan bahan, serta cara pembuatannya.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+  
+<h2 class="title">
+Apa Itu Sipache?
+</h2>
+
+<div class="about">
+
+<div>
+
+
+</div>
+
+<div class="card">
+
+<p>
+
+Sipache adalah minuman yang berasal dari Meksiko. Minuman ini terbuat dari fermentasi kulit nanas. Karena merupakan minuman probiotik, tentunya minuman Tepache ini juga punya banyak manfaat untuk tubuh karena mengandung probiotik atau sering disebut bakteri baik yang dapat membantu untuk mencegah serta mengobati diare.
+
+<br><br>
+
+Probiotik ini juga dapat memelihara sistem pencernaan terutama kesehatan lambung dan usus.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="manfaat" class="fade">
+
+<h2 class="title">
+Manfaat Sipache
+</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>🦠 Probiotik</h3>
+<p>Membantu menjaga keseimbangan bakteri baik.</p>
+</div>
+
+<div class="card">
+<h3>💚 Lambung</h3>
+<p>Membantu menjaga kesehatan lambung.</p>
+</div>
+
+<div class="card">
+<h3>🥗 Usus</h3>
+<p>Membantu menjaga kesehatan usus.</p>
+</div>
+
+<div class="card">
+<h3>🍍 Fermentasi</h3>
+<p>Memanfaatkan kulit nanas menjadi minuman sehat.</p>
+</div>
+
+</div>
+
+</section>
+
+  <section id="alat" class="fade">
+
+<h2 class="title">Alat & Bahan</h2>
+
+<div class="card">
+
+<ul>
+
+<li>🍍 Kulit nanas</li>
+<li>🍯 125 gram gula Jawa</li>
+<li>💧 1 Liter Air</li>
+<li>🧺 Kain Bersih</li>
+<li>🌿 Kayu Manis 6 cm</li>
+<li>🫙 Toples Kaca</li>
+<li>🥄 Saringan</li>
+<li>🥤 Gelas</li>
+
+</ul>
+
+</div>
+
+</section>
+
+<section id="cara" class="fade">
+
+<h2 class="title">
+Cara Membuat
+</h2>
+
+<input
+class="search"
+placeholder="Cari langkah..."
+onkeyup="cari(this.value)"
+>
+
+<div class="timeline" id="list">
+
+<div class="step">
+<h3>Langkah 1</h3>
+<p>Masukkan kulit nanas ke dalam wadah kaca untuk proses fermentasi.</p>
+</div>
+
+<div class="step">
+<h3>Langkah 2</h3>
+<p>Siapkan gelas dan larutkan gula Jawa menggunakan 500 ml air panas, kemudian diamkan hingga tidak terlalu panas.</p>
+</div>
+
+<div class="step">
+<h3>Langkah 3</h3>
+<p>Tuang air gula ke dalam wadah kaca yang berisi kulit nanas kemudian tambahkan 500 ml air. Pastikan kulit nanas benar-benar terendam.</p>
+</div>
+
+<div class="step">
+<h3>Langkah 4</h3>
+<p>Tutup wadah menggunakan kain bersih kemudian ikat menggunakan tali atau karet.</p>
+</div>
+
+<div class="step">
+<h3>Langkah 5</h3>
+<p>Diamkan selama 24 jam. Jika ingin rasa lebih asam tunggu hingga 3 hari. Fermentasi berhasil jika muncul gelembung atau buih putih.</p>
+</div>
+
+<div class="step">
+<h3>Langkah 6</h3>
+<p>Saring sipache, buang kulit nanas, lalu sajikan dingin atau tambahkan es batu.</p>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<h2>SIPACHE</h2>
+
+<p>Informasi pembuatan sipache</p>
+
+
+</footer>
+
+<button id="top">
+⬆
+</button>
+
+
+
+<div id="kicauWebsite">
+<section class="k-hero">
+<div>
+<span class="k-badge">🌱 WEBSITE EDUKASI LINGKUNGAN</span>
+<h2>KICAU GREEN WARIOR</h2>
+<p>Ruang edukasi untuk mengenal bencana, memahami penyebab dan dampaknya, serta membangun kebiasaan menjaga lingkungan agar kita lebih siap dan peduli terhadap bumi.</p>
+<a href="#k-pengertian" class="btn">Mulai Belajar</a>
+</div>
+</section>
+
+<section class="k-section" id="k-pengertian">
+<h2 class="k-title">🌍 Apa Itu Bencana?</h2>
+<p class="k-sub">Bencana adalah peristiwa yang dapat mengganggu kehidupan masyarakat dan menimbulkan dampak terhadap manusia, lingkungan, maupun berbagai fasilitas yang digunakan sehari-hari.</p>
+<div class="k-text-card">
+<p>Bencana dapat terjadi karena faktor alam, faktor nonalam, maupun aktivitas manusia. Karena itu, mengenali jenis bencana dan memahami tindakan yang tepat sangat penting. Kesiapsiagaan tidak hanya dilakukan ketika bencana sudah terjadi, tetapi juga dimulai dari sebelum bencana melalui pengetahuan, kepedulian, dan kebiasaan menjaga lingkungan.</p>
+</div>
+</section>
+
+<section class="k-section">
+<h2 class="k-title">📚 Jenis-Jenis Bencana</h2>
+<p class="k-sub">Setiap bencana memiliki karakteristik yang berbeda. Dengan mengenalinya, kita dapat memahami risiko dan mempersiapkan diri dengan lebih baik.</p>
+<div class="k-grid">
+<div class="k-card"><div class="k-card-content"><h3>🌋 Bencana Alam</h3><p>Peristiwa yang berkaitan dengan proses alam, seperti gempa bumi, banjir, tanah longsor, dan letusan gunung api.</p></div></div>
+<div class="k-card"><div class="k-card-content"><h3>🏭 Bencana Nonalam</h3><p>Peristiwa yang tidak secara langsung disebabkan proses alam, misalnya wabah penyakit atau gangguan teknologi tertentu.</p></div></div>
+<div class="k-card"><div class="k-card-content"><h3>👥 Bencana Sosial</h3><p>Peristiwa yang berkaitan dengan konflik atau kondisi sosial yang dapat mengganggu keamanan dan kehidupan masyarakat.</p></div></div>
+</div>
+</section>
+
+<section class="k-section">
+<h2 class="k-title">🔥 Karhutla di kalimantan</h2>
+<p class="k-sub">Kebakaran hutan dan lahan dapat merusak ekosistem serta mengganggu kehidupan masyarakat.</p>
+<div class="k-grid">
+<div class="k-card"><img src="3bbaafe0-a53b-11f1-a492-cfe8e2df591b.jpg" alt="Karhutla"><div class="k-card-content"><h3>Apa itu Karhutla?</h3><p>Karhutla adalah kebakaran yang terjadi di kawasan hutan dan/atau lahan. Kebakaran dapat menyebar dengan cepat ketika kondisi lingkungan kering dan terdapat bahan yang mudah terbakar.</p></div></div>
+<div class="k-card"><div class="k-card-content"><h3>Penyebab</h3><p>Karhutla dapat berkaitan dengan faktor alam maupun aktivitas manusia, termasuk pembakaran lahan yang tidak terkendali dan kelalaian dalam menggunakan api.</p></div></div>
+<div class="k-card"><div class="k-card-content"><h3>Dampak</h3><p>Karhutla dapat menyebabkan kerusakan habitat, hilangnya vegetasi, gangguan kualitas udara, serta menghambat aktivitas masyarakat.</p></div></div>
+<div class="k-card"><div class="k-card-content"><h3>Yang Bisa Dilakukan</h3><p>Hindari membakar sampah atau lahan sembarangan, jangan meninggalkan sumber api tanpa pengawasan, dan laporkan kejadian kebakaran kepada pihak berwenang.</p></div></div>
+</div>
+</section>
+
+<section class="k-section">
+<h2 class="k-title">🌎 Gempa Bumi di flores </h2>
+<p class="k-sub">Gempa bumi terjadi karena pelepasan energi di dalam bumi yang menghasilkan getaran pada permukaan.</p>
+<div class="k-grid">
+<div class="k-card"><img src="20260818-img-20260818-005944.png" alt="Gempa bumi"><div class="k-card-content"><h3>Mengenal Gempa</h3><p>Gempa dapat terjadi karena aktivitas tektonik maupun sumber lain. Getarannya dapat dirasakan dalam waktu singkat dan kekuatannya dapat berbeda-beda.</p></div></div>
+<div class="k-card"><div class="k-card-content"><h3>Sebelum Gempa</h3><p>Kenali tempat aman di rumah atau sekolah, pahami jalur evakuasi, dan simpan barang penting di tempat yang mudah dijangkau.</p></div></div>
+<div class="k-card"><div class="k-card-content"><h3>Saat Gempa</h3><p>Tetap tenang, lindungi kepala dan tubuh dari benda yang dapat jatuh, serta ikuti arahan guru, orang tua, atau petugas.</p></div></div>
+<div class="k-card"><div class="k-card-content"><h3>Setelah Gempa</h3><p>Periksa keadaan sekitar dengan hati-hati, jauhi bangunan yang rusak, dan ikuti informasi resmi serta petunjuk evakuasi.</p></div></div>
+</div>
+</section>
+
+<section class="k-section">
+<h2 class="k-title">🌊 Banjir di sumatera</h2>
+<p class="k-sub">Banjir terjadi ketika air menggenangi wilayah yang biasanya tidak tergenang. Kondisinya dapat dipengaruhi curah hujan, kondisi sungai, drainase, dan lingkungan.</p>
+<div class="k-grid">
+<div class="k-card"><img src="IMG-20260915-WA0002.jpg" alt="Banjir"><div class="k-card-content"><h3>Apa Itu Banjir?</h3><p>Banjir merupakan genangan air yang dapat mengganggu permukiman, jalan, fasilitas umum, dan aktivitas masyarakat.</p></div></div>
+<div class="k-card"><div class="k-card-content"><h3>Penyebab</h3><p>Hujan deras, saluran air yang tersumbat, berkurangnya daerah resapan, serta kondisi sungai dapat meningkatkan risiko banjir.</p></div></div>
+<div class="k-card"><div class="k-card-content"><h3>Dampak</h3><p>Banjir dapat mengganggu transportasi, merusak fasilitas dan barang, serta membuat aktivitas masyarakat menjadi terhambat.</p></div></div>
+<div class="k-card"><div class="k-card-content"><h3>Pencegahan</h3><p>Buang sampah pada tempatnya, jaga saluran air tetap bersih, kurangi penggunaan barang sekali pakai, dan pertahankan area yang dapat menyerap air.</p></div></div>
+</div>
+</section>
+
+< class="k-section">
+<style>
+.k-volcano-image {
+    max-width: 950px;
+    margin: 0 auto 35px;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,.13);
+}
+
+.k-volcano-image img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .k-volcano-image img {
+        height: 250px;
+    }
+}
+</style>
+
+
+<!-- 🌋 LETUSAN GUNUNG API -->
+
+    <h2 class="k-title">🌋 Erupsi gunung anak krakatau</h2>
+
+    <p class="k-sub">
+        Gunung api dapat mengalami aktivitas vulkanik yang menghasilkan
+        material dan kondisi lingkungan yang perlu diwaspadai.
+    </p>
+
+    <!-- GAMBAR GUNUNG MELETUS -->
+    <div class="k-volcano-image">
+        <img 
+            src="IMG-20260915-WA0003.jpg" 
+            alt="Letusan Gunung Api"
+        >
+    </div>
+
+    <div class="k-text-card">
+
+        <p>
+            Letusan gunung api adalah peristiwa keluarnya material dari
+            dalam bumi melalui gunung api. Material yang keluar dapat
+            berupa lava, abu vulkanik, batuan, gas, dan material lainnya.
+        </p>
+
+        <p>
+            Letusan gunung api dapat memberikan dampak terhadap lingkungan
+            dan kehidupan masyarakat di sekitar gunung. Abu vulkanik dapat
+            mengganggu kualitas udara, sedangkan lava dan material vulkanik
+            dapat merusak lingkungan serta fasilitas di sekitar kawasan gunung.
+        </p>
+
+    </div>
+
+    <div class="k-grid">
+
+        <div class="k-card">
+            <div class="k-card-content">
+                <h3>⚠️ Dampak Letusan</h3>
+                <p>
+                    Abu vulkanik dapat mengganggu kualitas udara.
+                    Tanaman dan lingkungan juga dapat terdampak material
+                    vulkanik, serta aktivitas masyarakat dapat terganggu.
+                </p>
+            </div>
+        </div>
+
+        <div class="k-card">
+            <div class="k-card-content">
+                <h3>🛡️ Sebelum Terjadi</h3>
+                <p>
+                    Ketahui jalur evakuasi dan titik kumpul. Perhatikan
+                    informasi resmi mengenai status gunung api dan ikuti
+                    arahan dari petugas.
+                </p>
+            </div>
+        </div>
+
+        <div class="k-card">
+            <div class="k-card-content">
+                <h3>🚨 Saat Aktivitas Meningkat</h3>
+                <p>
+                    Ikuti informasi resmi dan segera mengikuti arahan
+                    evakuasi apabila diminta. Jangan memasuki wilayah
+                    yang dinyatakan berbahaya.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</>
+
+<h2 class="k-title">💥 Dampak Bencana</h2>
+<p class="k-sub">Dampak bencana tidak hanya terlihat dari kerusakan fisik. Lingkungan dan aktivitas masyarakat juga dapat terdampak.</p>
+<div class="k-list">
+<div class="k-list-item"><h3>🏠 Kerusakan Fasilitas</h3><p>Rumah, jalan, sekolah, dan fasilitas umum dapat mengalami gangguan atau kerusakan.</p></div>
+<div class="k-list-item"><h3>🌳 Kerusakan Lingkungan</h3><p>Habitat, vegetasi, kualitas air, dan kondisi ekosistem dapat berubah akibat bencana.</p></div>
+<div class="k-list-item"><h3>🚶 Aktivitas Terganggu</h3><p>Kegiatan belajar, bekerja, transportasi, dan pelayanan masyarakat dapat terhambat.</p></div>
+<div class="k-list-item"><h3>🤝 Kehidupan Sosial</h3><p>Masyarakat perlu bekerja sama untuk saling membantu dan memulihkan kondisi setelah bencana.</p></div>
+</div>
+</section>
+
+<section class="k-section">
+<h2 class="k-title">🌱 Menjaga Lingkungan</h2>
+<p class="k-sub">Menjaga lingkungan adalah salah satu bentuk kepedulian yang bisa dilakukan setiap hari.</p>
+<div class="k-grid">
+<div class="k-card"><div class="k-card-content"><h3>♻️ Kurangi Sampah</h3><p>Gunakan barang seperlunya, pilih barang yang dapat digunakan kembali, dan pilah sampah sesuai jenisnya.</p></div></div>
+<div class="k-card"><div class="k-card-content"><h3>💧 Hemat Air</h3><p>Gunakan air secukupnya dan hindari membiarkan keran terbuka tanpa kebutuhan.</p></div></div>
+<div class="k-card"><div class="k-card-content"><h3>🌳 Rawat Tanaman</h3><p>Menanam dan merawat tanaman membantu membuat lingkungan lebih hijau serta mendukung ekosistem sekitar.</p></div></div>
+<div class="k-card"><div class="k-card-content"><h3>🧹 Bersihkan Lingkungan</h3><p>Jaga kebersihan rumah, sekolah, dan lingkungan sekitar agar tidak menjadi tempat penumpukan sampah.</p></div></div>
+</div>
+</section>
+
+<section class="k-section">
+<h2 class="k-title">🚨 Kesiapsiagaan Bencana</h2>
+<p class="k-sub">Kesiapsiagaan berarti mempersiapkan diri sebelum keadaan darurat terjadi.</p>
+<div class="k-steps">
+<div class="k-step"><h3>Kenali Risiko di Sekitar</h3><p>Pelajari bencana yang mungkin terjadi di lingkungan rumah, sekolah, atau daerah tempat tinggal.</p></div>
+<div class="k-step"><h3>Kenali Jalur Evakuasi</h3><p>Ketahui jalan menuju tempat aman dan titik kumpul yang sudah ditentukan.</p></div>
+<div class="k-step"><h3>Ikuti Informasi Resmi</h3><p>Gunakan informasi dari pihak berwenang dan jangan mudah menyebarkan kabar yang belum jelas kebenarannya.</p></div>
+<div class="k-step"><h3>Tenang dan Ikuti Arahan</h3><p>Saat keadaan darurat, tetap tenang dan ikuti arahan orang dewasa, guru, keluarga, atau petugas.</p></div>
+<div class="k-step"><h3>Peduli Sesama</h3><p>Bantu orang di sekitar sesuai kemampuan dan jangan melakukan tindakan yang dapat membahayakan diri sendiri maupun orang lain.</p></div>
+</div>
+</section>
+
+<section class="k-cta">
+<h2>🐦 Jadilah GREEN WARIOR!</h2>
+<p>Menjadi GREEN WARIOR bukan berarti harus melakukan hal besar. Mulailah dari kebiasaan sederhana: menjaga kebersihan, mengurangi sampah, peduli lingkungan, mengenal risiko bencana, dan mengajak orang lain melakukan hal baik.</p>
+<a href="#k-pengertian" class="btn">Pelajari Lagi</a>
+</section>
+
+<footer class="k-footer">
+<h2>KICAU GREEN WARIOR</h2>
+<p>Peduli lingkungan • Kenali bencana di sekitar • Siap menghadapi resiko bencana </p>
+</footer>
+</div>
+
+<script>
+
+const progress=document.querySelector(".progress");
+
+window.addEventListener("scroll",()=>{
+
+let tinggi=document.documentElement.scrollHeight-window.innerHeight;
+
+let scroll=(window.scrollY/tinggi)*100;
+
+progress.style.width=scroll+"%";
+
+});
+
+function darkMode(){
+
+document.body.classList.toggle("dark");
+
+}
+
+
+const topBtn=document.getElementById("top");
+
+window.addEventListener("scroll",()=>{
+
+document.querySelectorAll(".fade").forEach(item=>{
+
+let pos=item.getBoundingClientRect().top;
+
+if(pos<window.innerHeight-120){
+
+item.classList.add("show");
+
+}
+
+});
+
+if(window.scrollY>300){
+
+topBtn.style.display="block";
+
+}else{
+
+topBtn.style.display="none";
+
+}
+
+});
+
+topBtn.onclick=()=>{
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+};
+
+function cari(text){
+
+text=text.toLowerCase();
+
+document.querySelectorAll(".step").forEach(item=>{
+
+if(item.innerText.toLowerCase().includes(text)){
+
+item.style.display="block";
+
+}else{
+
+item.style.display="none";
+
+}
+
+});
+
+}
+
+// Bubble otomatis
+
+for(let i=0;i<20;i++){
+
+let bubble=document.createElement("div");
+
+bubble.className="bubble";
+
+bubble.style.left=Math.random()*100+"%";
+
+let ukuran=Math.random()*50+20;
+
+bubble.style.width=ukuran+"px";
+
+bubble.style.height=ukuran+"px";
+
+bubble.style.animationDuration=(Math.random()*8+6)+"s";
+
+bubble.style.animationDelay=Math.random()*5+"s";
+
+document.body.appendChild(bubble);
+
+}
+
+
+
+function toggleMenu(){
+const menu=document.getElementById("menuBox");
+menu.classList.toggle("show");
+}
+
+function showSIPACHE(){
+document.getElementById("kicauWebsite").classList.remove("active");
+document.querySelectorAll("body > section, body > footer, body > #top").forEach(el=>el.style.display="");
+document.querySelector("nav h1").innerText="SIPACHE";
+document.querySelector("nav ul").style.display="flex";
+document.getElementById("menuBox").classList.remove("show");
+window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function showKICAU(){
+document.querySelectorAll("body > section, body > footer, body > #top").forEach(el=>el.style.display="none");
+document.getElementById("kicauWebsite").classList.add("active");
+document.querySelector("nav h1").innerText="KICAU GREEN WARIOR";
+document.querySelector("nav ul").style.display="none";
+document.getElementById("menuBox").classList.remove("show");
+window.scrollTo({top:0,behavior:"smooth"});
+}
+
+</script>
+
+</body>
+</html>
